@@ -13,29 +13,20 @@ const { User, Band, Gig } = Schema
 
 // console.log(User)
 
-const monday = new Gig({
-    venue: 'PCM',
-    city: 'Atlanta',
-    date: 'Monday',
-    price: 3.50
-})
 
-const nickle = new Band({
-    name: 'NickelBack',
-    genre: 'Awesome',
-    gigs: [monday]
-})
+//can single line these things for ease
+const monday = new Gig({ venue: 'PCM', city: 'Atlanta', date: 'Monday', price: 3.50 })
 
-const daniel = new User({
-    username: 'Mancy',
-    city: 'Atlanta',
-    bands: [nickle]
-})
+const nickle = new Band({ name: 'NickelBack', genre: 'Awesome', gigs: [monday] })
+
+const mancy = new User({ username: 'Mancy', city: 'Atlanta', bands: [nickle] })
+
+const nancy = new User({ username: 'Nancy', city: 'Hotlanta', bands: [nickle] })
 
 User.deleteMany()
     .then(() => {
         // MUST REMEMBER RETURN BECAUSE MULTI PROMISES ARE WEIRD
-        return daniel.save()
+        return User.insertMany([mancy, nancy])
     })
     .then(() => {
         console.log('done seeding!')
