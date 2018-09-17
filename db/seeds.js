@@ -1,7 +1,7 @@
 // needs program mongoose
 const mongoose = require('mongoose')
 // needs to connect mongoose to our database
-mongoose.connect('mongodb://localhost/band-tracker')
+mongoose.connect('mongodb://localhost/band-tracker', { useNewUrlParser: true })
 
 const Schema = require('./schema')
 
@@ -32,9 +32,12 @@ const daniel = new User({
     bands: [nickle]
 })
 
-daniel.save()
-    .then(data => {
-        console.log(data)
+User.deleteMany()
+    .then(() => {
+        // MUST REMEMBER RETURN BECAUSE MULTI PROMISES ARE WEIRD
+        return daniel.save()
+    })
+    .then(() => {
         console.log('done seeding!')
         // same as db.close if we had defined 'db'
         mongoose.connection.close()
