@@ -19,13 +19,21 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     User.findById(req.params.id)
     .then((user) => {
-      res.send(user) // render('users/show', { user })
+      res.render('users/show', { user }) // render('users/show', { user })
     })
 })
 
 // NEW, render new form
 
 // CREATE
+router.post('/', (req, res) => {
+  // const newUser = new User(req.body)
+  // newUser.save()
+  User.create(req.body)
+  .then((user) => {
+    res.send(user)
+  })
+})
 
 // EDIT, render edit form
 

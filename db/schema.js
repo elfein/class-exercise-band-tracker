@@ -1,3 +1,5 @@
+// 1. we started here!! setting up data types and things
+
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 

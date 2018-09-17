@@ -1,3 +1,5 @@
+// 2. then we went here and made actual instances of data in the database... we tested using compass
+
 // needs program mongoose
 const mongoose = require('mongoose')
 // needs to connect mongoose to our database

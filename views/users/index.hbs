@@ -2,6 +2,6 @@
 
 <div>
     {{#each users}}
-        <div>Username: {{this.username}}, City: {{this.city}}</div>
+        <div>Username: {{this.username}} <a href='/users/{{this._id}}'>Go to user</a></div>
     {{/each}}
 </div>
