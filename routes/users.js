@@ -11,7 +11,7 @@ const { User } = require('../db/schema')
 router.get('/', (req, res) => {
   User.find()
   .then((users) => {
-    res.send(users)
+    res.render('users/index', { users })
   })
 })
 
