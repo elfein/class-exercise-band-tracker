@@ -39,8 +39,22 @@ router.post('/', (req, res) => {
 })
 
 // EDIT, render edit form
+router.get('/:id/edit', (req, res)=> {
+  User.findById(req.params.id)
+  .then((user) => {
+  res.render('users/edit', { user })
+  })
+})
 
 // UPDATE
+router.put('/:id', (req, res) => {
+  // const newUser = new User(req.body)
+  // newUser.save()
+  User.findByIdAndUpdate(req.params.id, req.body)
+  .then((user) => {
+    res.redirect(`/users/${user._id}`)
+  })
+})
 
 // DELETE
 router.delete('/:id', (req, res) => {
