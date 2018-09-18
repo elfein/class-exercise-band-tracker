@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
 })
 
 // EDIT, render edit form
-router.get('/:id/edit', (req, res)=> {
+router.get('/:id/edit', (req, res) => {
   User.findById(req.params.id)
   .then((user) => {
   res.render('users/edit', { user })

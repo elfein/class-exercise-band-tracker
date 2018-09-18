@@ -4,7 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
+if (process.env.MONGODB_URI){
+  mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
+} else {
 mongoose.connect('mongodb://localhost/band-tracker', { useNewUrlParser: true })
+}
 const methodOverride = require('method-override')
 
 var indexRouter = require('./routes/index');
