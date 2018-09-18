@@ -21,10 +21,10 @@ const { User, Band, Gig } = Schema
 const monday = new Gig({ venue: 'PCM', city: 'Atlanta', date: 'Monday', price: 3.50 })
 
 const nickle = new Band({ name: 'NickelBack', genre: 'Awesome', gigs: [monday] })
+const mickle = new Band({ name: 'MickelBack', genre: 'Not As Awesome', gigs: [monday] })
 
-const mancy = new User({ username: 'Mancy', city: 'Atlanta', bands: [nickle] })
-
-const nancy = new User({ username: 'Nancy', city: 'Hotlanta', bands: [nickle] })
+const mancy = new User({ username: 'Mancy', city: 'Atlanta', bands: [nickle, mickle] })
+const nancy = new User({ username: 'Nancy', city: 'Hotlanta', bands: [nickle, mickle] })
 
 User.deleteMany()
     .then(() => {

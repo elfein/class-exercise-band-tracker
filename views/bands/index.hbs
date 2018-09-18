@@ -1,0 +1,7 @@
+<h1>All Bands <a href="users/{{uderId}}/bands/new">( new )</a></h1>
+
+<div>
+    {{#each bands}}
+        <div>Band Name: {{this.name}} <a href='/users/{{../userId}}/bands/{{this._id}}'>Go to band</a></div>
+    {{/each}}
+</div>
