@@ -1,7 +1,7 @@
 var express = require('express');
 // very important to mergeParams!!!
 var router = express.Router({ mergeParams: true });
-const { User } = require('../db/schema')
+const { User, Band } = require('../db/schema')
 
 // INDEX, SHOW ALL
 router.get('/', (req, res) => {
@@ -36,7 +36,17 @@ router.get('/:id', (req, res) => {
 
 
 // CREATE
-
+router.post('/', (req, res) => {
+    const newBand = new Band(req.body)
+    User.findById(req.params.userId)
+    .then((user) => {
+        user.bands.push(newBand)
+       return  user.save()
+    })
+    .then((user) => {
+        res.redirect(`/users/${req.params.userId}/bands`)
+    })
+})
 
 // UPDATE
 

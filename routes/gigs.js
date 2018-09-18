@@ -14,6 +14,13 @@ router.get('/', (req, res) => {
 // NEW
 
 // SHOW
+router.get('/:id', (req, res) => {
+    User.findById(req.params.userId)
+    .then((user) => {
+        // clean this up with consts
+        res.send(user.bands.id(req.params.bandId).gigs.id(req.params.id))
+    })
+})
 
 // EDIT
 
