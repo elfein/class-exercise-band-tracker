@@ -24,7 +24,10 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     User.findById(req.params.userId)
         .then((user) => {
-            res.send(user.bands.id(req.params.id))
+            res.render('bands/show', {
+                userId: req.params.userId,
+                band: user.bands.id(req.params.id)
+            })
         })
 })
 
